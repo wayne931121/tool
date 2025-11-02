@@ -103,3 +103,9 @@ direction = [1.0, 15.0, 169.0]
 up = [0.9943875074386597, -0.10574121028184891, 0.0035013644956052303]
 print( direction_to_quaternion(direction, up) )
 ```
+https://math.stackexchange.com/questions/1375754/clarification-of-definition-of-inverse-with-quaternions
+```py
+def inverte_quaternion(q):
+    return [q[0],-q[1],-q[2],-q[3]]
+print( inverte_quaternion([0.10143093019723892, -0.7759947776794434, 0.09897363185882568, 0.6146121025085449]) )
+```
