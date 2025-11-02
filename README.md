@@ -1,5 +1,5 @@
 # tool
-uh...just some function I need to use now...do a recore....maybe I will use in future?
+uh...just some function I need to use now...do a record....maybe I will use in future?
 
 ```py
 def cross_product(p1,p2):
