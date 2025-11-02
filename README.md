@@ -73,7 +73,7 @@ def rotation_matrix_to_quaternion(r):
         i = 0;
         if r[1][1] > r[0][0]:
             i = 1;
-        if r[2][2] > r[1][1]:
+        if r[2][2] > r[i][i]:
             i = 2;
         j = s_next[i];
         k = s_next[j];
