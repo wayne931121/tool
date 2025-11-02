@@ -86,3 +86,17 @@ def rotation_matrix_to_quaternion(r):
 
 print(rotation_matrix_to_quaternion(r))
 ```
+```py
+direction = [1.0, 15.0, 169.0]
+up = [0.9943875074386597, -0.10574121028184891, 0.0035013644956052303]
+zAxis = unit_vector(direction)
+xAxis = cross_product(up, zAxis)
+xAxis = unit_vector(xAxis)
+yAxis = cross_product(zAxis, xAxis)
+r = [
+    [xAxis[0],yAxis[0],zAxis[0]],
+    [xAxis[1],yAxis[1],zAxis[1]],
+    [xAxis[2],yAxis[2],zAxis[2]]
+]
+rotation_matrix_to_quaternion(r)
+```
