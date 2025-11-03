@@ -123,3 +123,7 @@ def quaternion_multiplication(a,b):
 ```py
  print(quaternion_multiplication([-0.32116106152534485, 0.42061036825180054, 0.18550415337085724, 0.8279677629470825],[0.0, -0.0, -0.7071067690849304, -0.7071067690849304]))
 ```
+```py
+def pmath(l1,l2,f=lambda a,b:a-b):
+    return [f(a,b) for a,b in zip(l1,l2)]
+```
