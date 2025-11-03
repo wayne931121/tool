@@ -55,8 +55,6 @@ r = [
 ]
 
 def rotation_matrix_to_quaternion(r):
-    scalar = 0
-    axis = [0,0,0,0]
     T = 1+r[0][0]+r[1][1]+r[2][2]
     if T > 0.00000001:
         S = (T**0.5)*2
@@ -64,25 +62,26 @@ def rotation_matrix_to_quaternion(r):
         Y = (r[0][2] - r[2][0]) / S
         Z = (r[1][0] - r[0][1]) / S
         W = 0.25 * S
-        axis[0] = X
-        axis[1] = Y
-        axis[2] = Z
-        axis[3] = W
-    else:
-        s_next = { 1, 2, 0 };
-        i = 0;
-        if r[1][1] > r[0][0]:
-            i = 1;
-        if r[2][2] > r[i][i]:
-            i = 2;
-        j = s_next[i];
-        k = s_next[j];
-        S = ( (r[i][i] - r[j][j] - r[k][k] + 1)**0.5 ) * 2
-        axis[i] = 0.25 * S
-        axis[3] = ( r[k][j] - r[j][k] ) / S
-        axis[j] = (r[j][i] + r[i][j]) / S
-        axis[k] = (r[k][i] + r[i][k]) / S
-    return axis
+    if ( r[0][0] > r[1][1] ) and ( r[0][0] > r[2][2] ): # Column 0: 
+        S  = ( ( 1.0 + r[0][0] - r[1][1] - r[2][2] )**0.5 ) * 2;
+        X = 0.25 * S;
+        Y = (r[1][0] + r[0][1] ) / S;
+        Z = (r[0][2] + r[2][0] ) / S;
+        W = (r[2][1] - r[1][2] ) / S;
+    elif ( r[1][1] > r[2][2] ): # Column 1: 
+        S  = ( ( 1.0 + r[1][1] - r[0][0] - r[2][2] )**0.5 ) * 2;
+        X = (r[1][0] + r[0][1] ) / S;
+        Y = 0.25 * S;
+        Z = (r[2][1] + r[1][2] ) / S;
+        W = (r[0][2] - r[2][0] ) / S;
+    else:  # Column 2:
+        S  = ( ( 1.0 + r[2][2] - r[0][0] - r[1][1] )**0.5 ) * 2;
+        X = (r[0][2] + r[2][0] ) / S;
+        Y = (r[2][1] + r[1][2] ) / S;
+        Z = 0.25 * S;
+        W = (r[1][0] - r[0][1] ) / S;
+    
+    return [W,X,Y,Z]
 
 print(rotation_matrix_to_quaternion(r))
 ```
