@@ -108,3 +108,15 @@ def inverte_quaternion(q):
     return [q[0],-q[1],-q[2],-q[3]]
 print( inverte_quaternion([0.10143093019723892, -0.7759947776794434, 0.09897363185882568, 0.6146121025085449]) )
 ```
+https://stackoverflow.com/questions/19956555/how-to-multiply-two-quaternions
+```py
+def quaternion_multiplication(a,b):
+    w,x,y,z = a
+    w1,x1,y1,z1 = b
+    return [
+        w * w1 - x * x1 - y * y1 - z * z1,
+        w * x1 + x * w1 + y * z1 - z * y1,
+        w * y1 - x * z1 + y * w1 + z * x1,
+        w * z1 + x * y1 - y * x1 + z * w1,
+    ]
+```
