@@ -105,7 +105,8 @@ print( direction_to_quaternion(direction, up) )
 https://math.stackexchange.com/questions/1375754/clarification-of-definition-of-inverse-with-quaternions
 ```py
 def inverte_quaternion(q):
-    return [q[0],-q[1],-q[2],-q[3]]
+    d = sum([i**2 for i in q])
+    return [q[0]/d,-q[1]/d,-q[2]/d,-q[3]/d]
 print( inverte_quaternion([0.10143093019723892, -0.7759947776794434, 0.09897363185882568, 0.6146121025085449]) )
 ```
 https://stackoverflow.com/questions/19956555/how-to-multiply-two-quaternions
